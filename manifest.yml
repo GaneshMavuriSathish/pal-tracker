@@ -5,3 +5,4 @@ applications:
       - route: pal-tracker-ganesh-cognizant-training.cfapps.io
     env:
       WELCOME_MESSAGE: Hello from the review environment
+      SPRING_DATASOURCE_URL: jdbc:mysql://us-cdbr-iron-east-02.cleardb.net/ad_440349ce752557f?user=bc4c76e0dccbe4\u0026password=a724627a
