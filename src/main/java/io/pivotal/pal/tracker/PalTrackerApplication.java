@@ -9,6 +9,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.TimeZone;
 
 @SpringBootApplication
 public class PalTrackerApplication {
@@ -22,10 +25,10 @@ public class PalTrackerApplication {
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUrl(System.getenv("SPRING_DATASOURCE_URL"));
 
-//        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-//        jdbcTemplate.execute("TRUNCATE time_entries");
-//
-//        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        jdbcTemplate.execute("TRUNCATE time_entries");
+
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         return new JdbcTimeEntryRepository(dataSource);
     }
 
