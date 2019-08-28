@@ -13,6 +13,8 @@ jobs:
       jdk: openjdk11
       addons:
         mariadb: '10.2'
+      before_install:
+        - chmod +x gradlew
       install: skip
       before_script:
         - mysql -uroot < databases/tracker/create_databases.sql
